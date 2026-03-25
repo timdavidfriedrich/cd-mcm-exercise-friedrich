@@ -1,4 +1,4 @@
-# Exercise 2: Microservice Architecture, Docker & GitHub Actions
+# Exercise 3: CI Pipeline -- SonarCloud, Matrix Builds & Linting
 
 **Course:** Continuous Delivery in Agile Software Development (Master)
 **Points:** 30
@@ -77,7 +77,7 @@ By the end of the course, you will have a fully containerized Go microservice wi
 - Docker Desktop (from Exercise 2)
 - Minikube (Exercise 4)
 
-## Project Overview
+## What's New in This Exercise
 
 1. **Fork** this repository on GitHub (click the "Fork" button in the top right corner). **Uncheck** "Copy the `main` branch only" so that all exercise branches are included in your fork.
 2. **Clone** your fork:
