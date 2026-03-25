@@ -1,7 +1,7 @@
 # Exercise 3: CI Pipeline -- SonarCloud, Matrix Builds & Linting
 
 **Course:** Continuous Delivery in Agile Software Development (Master)
-**Points:** 30
+**Points:** 24
 
 ## Learning Objectives
 
