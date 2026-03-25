@@ -1,8 +1,9 @@
-# Continuous Delivery in Agile Software Development -- Exercises
+# Exercise 2: Microservice Architecture, Docker & GitHub Actions
 
-This repository contains four progressive exercises for the Master course **Continuous Delivery in Agile Software Development**.
+**Course:** Continuous Delivery in Agile Software Development (Master)
+**Points:** 30
 
-## Overview
+## Learning Objectives
 
 | Exercise | Topic | Branch |
 |----------|-------|--------|
@@ -76,7 +77,7 @@ By the end of the course, you will have a fully containerized Go microservice wi
 - Docker Desktop (from Exercise 2)
 - Minikube (Exercise 4)
 
-## Getting Started
+## Project Overview
 
 1. **Fork** this repository on GitHub (click the "Fork" button in the top right corner). **Uncheck** "Copy the `main` branch only" so that all exercise branches are included in your fork.
 2. **Clone** your fork:
@@ -89,7 +90,18 @@ cd CI-CD-MCM
 3. Switch to the respective exercise branch:
 
 ```bash
-git checkout exercise/01-git-basics
+# Run with in-memory store (no Docker needed)
+go run ./cmd/api
+
+# Run with Docker Compose (API + PostgreSQL)
+docker compose up --build
+
+# Test the API
+curl http://localhost:8080/health
+curl http://localhost:8080/products
+curl -X POST http://localhost:8080/products \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Widget","price":9.99}'
 ```
 
 > **Important:** Do not clone the original repository directly — always work on your own fork so you can push changes and create Pull Requests.
