@@ -1,9 +1,8 @@
-# Exercise 3: CI Pipeline -- SonarCloud, Matrix Builds & Linting
+# Continuous Delivery in Agile Software Development -- Exercises
 
-**Course:** Continuous Delivery in Agile Software Development (Master)
-**Points:** 24
+This repository contains four progressive exercises for the Master course **Continuous Delivery in Agile Software Development**.
 
-## Learning Objectives
+## Overview
 
 | Exercise | Topic | Branch |
 |----------|-------|--------|
@@ -77,7 +76,7 @@ By the end of the course, you will have a fully containerized Go microservice wi
 - Docker Desktop (from Exercise 2)
 - Minikube (Exercise 4)
 
-## What's New in This Exercise
+## Getting Started
 
 1. **Fork** this repository on GitHub (click the "Fork" button in the top right corner). **Uncheck** "Copy the `main` branch only" so that all exercise branches are included in your fork.
 2. **Clone** your fork:
