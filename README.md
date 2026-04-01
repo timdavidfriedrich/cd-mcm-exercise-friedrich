@@ -1,8 +1,9 @@
-# Continuous Delivery in Agile Software Development -- Exercises
+# Exercise 3: CI Pipeline -- SonarCloud, Matrix Builds & Linting
 
-This repository contains four progressive exercises for the Master course **Continuous Delivery in Agile Software Development**.
+**Course:** Continuous Delivery in Agile Software Development (Master)
+**Points:** 24
 
-## Overview
+## Learning Objectives
 
 | Exercise | Topic | Branch |
 |----------|-------|--------|
@@ -76,17 +77,14 @@ By the end of the course, you will have a fully containerized Go microservice wi
 - Docker Desktop (from Exercise 2)
 - Minikube (Exercise 4)
 
-## Getting Started
+## What's New in This Exercise
 
 1. **Fork** this repository on GitHub (click the "Fork" button in the top right corner). **Uncheck** "Copy the `main` branch only" so that all exercise branches are included in your fork.
 2. **Clone** your fork:
 
-```bash
-git clone https://github.com/<your-username>/CI-CD-MCM.git
-cd CI-CD-MCM
-```
+---
 
-3. Switch to the respective exercise branch:
+## Tasks
 
 ```bash
 # Run with in-memory store (no Docker needed)
@@ -103,9 +101,11 @@ curl -X POST http://localhost:8080/products \
   -d '{"name":"Widget","price":9.99}'
 ```
 
-> **Important:** Do not clone the original repository directly — always work on your own fork so you can push changes and create Pull Requests.
+The CI workflow already has a matrix strategy with one Go version. Your tasks:
 
-Each exercise branch contains a detailed `README.md` with instructions.
+1. **Extend the matrix** to include Go versions `1.21` and `1.22` (see the TODO in `ci.yml`).
+2. **Verify** that the pipeline runs tests for both Go versions in parallel.
+3. **Add an OS matrix dimension** (`ubuntu-latest`, `macos-latest`) so tests run on both platforms.
 
 ## Author
 - FH-Prof. Dr. Marc Kurz (marc.kurz@fh-hagenberg.at)
