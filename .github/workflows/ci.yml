@@ -29,11 +29,24 @@ jobs:
       - name: Run tests with coverage
         run: go test -v -coverprofile=coverage.out ./...
 
+      - name: Check coverage threshold (>= 80%)
+        run: |
+          grep -vE "(cmd/api|/postgres\.go|/postgres_handler\.go)" coverage.out > coverage.filtered.out
+          COVERAGE=$(go tool cover -func=coverage.filtered.out | awk '/^total:/ {gsub(/%/,"",$3); print $3}')
+          echo "Coverage (excluding cmd/** and DB code): $COVERAGE%"
+          awk -v c="$COVERAGE" 'BEGIN{ if (c+0 < 80) exit 1 }' || { echo "FAIL: coverage $COVERAGE% < 80%"; exit 1; }
+          echo "PASS: coverage $COVERAGE% >= 80%"
+
+      - name: Generate coverage HTML report
+        run: go tool cover -html=coverage.out -o coverage.html
+
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ matrix.os }}-go${{ matrix.go-version }}
-          path: coverage.out
+          path: |
+            coverage.out
+            coverage.html
 
       - name: Build
         run: go build -o api-server ./cmd/api
