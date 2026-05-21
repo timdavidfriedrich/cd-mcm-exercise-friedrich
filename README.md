@@ -1,8 +1,9 @@
-# Continuous Delivery in Agile Software Development -- Exercises
+# Exercise 4: Vulnerability Scanning & Kubernetes Deployment
 
-This repository contains four progressive exercises for the Master course **Continuous Delivery in Agile Software Development**.
+**Course:** Continuous Delivery in Agile Software Development (Master)
+**Points:** 24
 
-## Overview
+## Learning Objectives
 
 | Exercise | Topic | Branch |
 |----------|-------|--------|
@@ -11,7 +12,7 @@ This repository contains four progressive exercises for the Master course **Cont
 | 3 | CI Pipeline: SonarCloud, Matrix Builds, Linting | `exercise/03-ci-pipeline` |
 | 4 | Vulnerability Scanning & Kubernetes Deployment | `exercise/04-security-k8s` |
 
-## Technology Stack
+## Prerequisites
 
 - **Language:** Go 1.24+
 - **Web Framework:** Gorilla Mux
@@ -22,7 +23,7 @@ This repository contains four progressive exercises for the Master course **Cont
 - **Security:** Trivy, govulncheck
 - **Deployment:** Kubernetes (Minikube)
 
-## Project: Product Catalog API
+## What's New in This Exercise
 
 Throughout the four exercises you will build and evolve a **Product Catalog API** -- a RESTful web service for managing products (create, read, update, delete). The API is written in Go and grows in complexity with each exercise.
 
@@ -68,7 +69,7 @@ k8s/                           # Kubernetes manifests (Exercise 4)
 
 By the end of the course, you will have a fully containerized Go microservice with a complete CI/CD pipeline including automated testing, linting, security scanning, and Kubernetes deployment.
 
-## Prerequisites
+---
 
 - Go 1.24+ installed
 - Git 2.30+
@@ -76,7 +77,7 @@ By the end of the course, you will have a fully containerized Go microservice wi
 - Docker Desktop (from Exercise 2)
 - Minikube (Exercise 4)
 
-## Getting Started
+### Task 1: Vulnerability Scanning -- Docker Image (6 Points)
 
 1. **Fork** this repository on GitHub (click the "Fork" button in the top right corner). **Uncheck** "Copy the `main` branch only" so that all exercise branches are included in your fork.
 2. **Clone** your fork:
@@ -89,7 +90,21 @@ cd CI-CD-MCM
 3. Switch to the respective exercise branch:
 
 ```bash
-git checkout exercise/01-git-basics
+# Minikube
+minikube start / stop / delete
+minikube dashboard                    # Open Kubernetes dashboard
+eval $(minikube docker-env)           # Use Minikube's Docker daemon
+
+# kubectl
+kubectl get pods -n product-catalog
+kubectl describe pod <name> -n product-catalog
+kubectl logs <pod-name> -n product-catalog
+kubectl exec -it <pod-name> -n product-catalog -- /bin/sh
+kubectl port-forward svc/product-catalog-api 8080:8080 -n product-catalog
+
+# Trivy
+trivy image <image>
+trivy fs .                            # Scan filesystem/dependencies
 ```
 
 > **Important:** Do not clone the original repository directly — always work on your own fork so you can push changes and create Pull Requests.
