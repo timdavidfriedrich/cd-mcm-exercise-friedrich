@@ -39,3 +39,6 @@ docker-compose.override.yml
 # Build
 /bin/
 /dist/
+
+# README, weil sonst der PR nicht funktioniert, lol.
+README.md
